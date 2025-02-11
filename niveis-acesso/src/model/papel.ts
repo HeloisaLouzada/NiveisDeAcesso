@@ -1,0 +1,17 @@
+import {type IEntidade} from './modelGeneric/entity';
+
+export interface IPapel extends IEntidade {
+  papelNivel: string;
+}
+
+export class Papel implements IPapel{
+  id: string;
+  nome: string;
+  papelNivel: string;
+
+  constructor(id: string, nome: string, papelNivel: string) {
+    this.id = id;
+    this.nome = nome;
+    this.papelNivel = papelNivel;
+  }
+}
