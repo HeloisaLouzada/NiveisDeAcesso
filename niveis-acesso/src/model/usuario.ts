@@ -1,6 +1,6 @@
-import {type IEntidade} from './modelGeneric/entity';
+import {type IEntity} from './modelGeneric/entity';
 
-export interface IUsuario extends IEntidade {
+export interface IUsuario extends IEntity {
   cpf: string;
   usuarioPapel: string;
 }

@@ -1,6 +1,6 @@
-import {type IEntidade} from './modelGeneric/entity';
+import {type IEntity} from './modelGeneric/entity';
 
-export interface IPapel extends IEntidade {
+export interface IPapel extends IEntity {
   papelNivel: string;
 }
 
