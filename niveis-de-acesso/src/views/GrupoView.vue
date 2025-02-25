@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
 import { useGrupoStore } from '@/controller/store/grupoStore';
@@ -10,10 +10,10 @@ onMounted(async() => {
 
 });
 
-const Grupos = ref();
+const grupos = ref();
 async function getPosts() {
     await useGrupoStore.fetch('');
-    Grupos.value = useGrupoStore.items;
+    grupos.value = useGrupoStore.items;
 }
 
 const header = ref([
@@ -45,8 +45,8 @@ async function salvarGrupo() {
 }
 
 function editGrupo(item: Grupo) {
-    const Grupo = item;
-    newGrupo.value = { ...Grupo };
+    const grupo = item;
+    newGrupo.value = { ...grupo };
     isEditing.value = true;
     showModal.value = true;
 }
@@ -77,7 +77,7 @@ async function deleteGrupo(item: unknown) {
   </div>
         <v-row>
             <v-col cols="2" class="d-flex justify-start">
-                <v-btn @click="() => { showModal = true; isEditing = false; newGrupo = { id: '', Nome: '' } }"
+                <v-btn @click="() => { showModal = true; isEditing = false; newGrupo = { id: '', nome: '' } }"
                     class="custom-width-2"
                     color="primary"
                     variant="flat"
@@ -86,7 +86,7 @@ async function deleteGrupo(item: unknown) {
                 </v-btn>
             </v-col>
         </v-row>
-        <v-data-table :headers="header" :items="Grupos">
+        <v-data-table :headers="header" :items="grupos">
           <template #item.actions="{ item }">
                     <v-btn @click="editGrupo(item)" color="primary" icon>
                       <mdicon name="pencil"></mdicon>
@@ -111,7 +111,7 @@ async function deleteGrupo(item: unknown) {
                 <v-form>
                     <v-text-field
                         label="Nome"
-                        v-model="newGrupo.Nome"
+                        v-model="newGrupo.nome"
                         required
                     ></v-text-field>
                 </v-form>
@@ -123,5 +123,3 @@ async function deleteGrupo(item: unknown) {
         </v-card>
     </v-dialog>
 </template>
-
-</script>
